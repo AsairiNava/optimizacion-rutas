@@ -40,6 +40,7 @@ def cargar_datos_real():
         if col not in X.columns:
             X[col] = 0
     X = X[columnas_modelo]
+    X = X.astype(np.float32)  # ✅ Corrección crítica para evitar error con XGBoost
 
     # Predicción
     df["tiempo_estimado_modelo"] = model.predict(X.values)
